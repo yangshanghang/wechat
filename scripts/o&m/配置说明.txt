@@ -1,5 +1,4 @@
-#联连公共服务平台微信服务号配置说明#
+#微信服务号配置说明(spring.properties)#
 lianlian.appid:微信服务号ID
 lianlian.appsecret=微信服务号秘钥
 lianlian.token=微信服务号开发者接入TOKEN
-lianlian.info.url=联连资讯服务地址
