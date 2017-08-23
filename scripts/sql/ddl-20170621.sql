@@ -1,0 +1,1 @@
+INSERT INTO `WECHAT_TEMPLATE` VALUES ('15266e12edde11e6a00a00188b839a25', 'lAY0ACL7J0wVpgwHel7W37VkfNA4rfJSukNp0n8lcUQ', 'wx_bind_notice', 'first:title:#ff0000;keyword1:content:#000000;keyword2:basicInfo:#000000;keyword3:sendTime:#aaaaaa;remark:remark:#ff0000');

@@ -1,0 +1,203 @@
+.scss-message {
+  background-color: #ebebeb;
+  position: relative;
+  padding: 0 22px;
+  .mod-msg {
+    .message-list {
+      padding-top: 20px;
+      .time {
+        font-size: 14px;
+        color: #333;
+        text-align: center;
+        line-height: 32px;
+        height: 32px;
+      }
+      .cont {
+        background-color: #fff;
+        padding: 10px 15px;
+        margin-bottom: 12px;
+        border-radius: 3px;
+        &:last-child{
+          margin-bottom:0;
+        }
+      }
+      .text {
+        color: #666;
+        .title {
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 22px;
+          color: #333;
+          &.yr_random_check{
+            color: #ff0000;
+            .word-type-icon{
+              background-position: 0 -1px;
+            }
+          }
+          &.yr_in_manage_error{
+            color: #ff0000;
+            .word-type-icon{
+              background-position: 0 -1px;
+            }
+          }
+          &.yr_out_manage_error{
+            color: #ff0000;
+            .word-type-icon{
+              background-position: 0 -1px;
+            }
+          }
+          span {
+            display: inline-block;
+            width: 12px;
+            height: 13px;
+            background-image: url("/img/wechat/type-icon.png");
+            vertical-align: -2px;
+            background-size: 12px 35px;
+          }
+          .word-type-icon {
+            background-position: 0 -21px;
+          }
+        }
+        h4 {
+          font-weight: normal;
+          font-size: 12px;
+          line-height: 14px;
+          color: #333;
+
+        }
+        p {
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 18px;
+          margin-top: 6px;
+          color: #333;
+        }
+        .detail {
+          padding: 5px 0;
+          font: normal 12px/14px 'Microsoft YaHei';
+          height: 24px;
+          box-sizing: border-box;
+          span {
+            color: #333;
+          }
+        }
+      }
+
+    }
+
+  }
+  .more {
+    margin: 0 auto 15px;
+    width: 250px;
+    text-align: center;
+
+    a {
+      font-size: 12px;
+      color: #999;
+      &:hover {
+        color: #386693;
+      }
+    }
+    img {
+      margin-right: 4px;
+      width: 16px;
+      vertical-align: -3px;
+      display: none;
+    }
+    label {
+      font: normal 12px/14px 'Microsoft YaHei';
+      color: #999;
+      text-align: center;
+    }
+  }
+  .nodata {
+    padding: 1.5em 0;
+    &.dip-none{
+      display: none !important;
+    }
+    text-align: center;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: normal;
+
+  }
+}
+
+.weui-loadmore {
+  width: 65%;
+  padding: 1.5em 0;
+  margin: 0 auto;
+  line-height: 22px;
+  height: 22px;
+  font-size: 14px;
+  text-align: center;
+  .weui-loadmore__tips {
+    display: inline-block;
+    vertical-align: middle
+  }
+
+  .weui-loadmore_line {
+    border-top: 1px solid #e5e5e5;
+    margin-top: 2.4em
+  }
+
+  .weui-loadmore_line .weui-loadmore__tips {
+    position: relative;
+    top: -.9em;
+    padding: 0 .55em;
+    background-color: #fff;
+    color: #999
+  }
+
+  .weui-loadmore_dot .weui-loadmore__tips {
+    padding: 0 .16em
+  }
+
+  .weui-loadmore_dot .weui-loadmore__tips:before {
+    content: " ";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    display: inline-block;
+    position: relative;
+    vertical-align: 0;
+    top: -.16em
+  }
+
+  .weui-loading {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-animation: e 1s steps(12) infinite;
+    animation: e 1s steps(12) infinite;
+    background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=) no-repeat;
+    background-size: 100%
+  }
+
+}
+
+@-webkit-keyframes e {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg)
+  }
+
+  to {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn)
+  }
+}
+
+@keyframes e {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg)
+  }
+
+  to {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn)
+  }
+}

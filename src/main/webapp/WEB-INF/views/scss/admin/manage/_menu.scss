@@ -1,0 +1,40 @@
+.menu-wrap {
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
+  .menu-json {
+    height: 85%;
+    padding-top: 20px;
+    .menu-box {
+      height: 100%;
+      .textarea-group {
+        height: 100%;
+      }
+      .menu-area {
+        height: 100%;
+        box-sizing: border-box;
+        font-size: 14px;
+        line-height: 16px;
+        border: 1px solid #dfe6eb;
+        background: #f1f1f1;
+      }
+    }
+  }
+  .menu-btn {
+    font-size: 0;
+    text-align: center;
+    .m-btn {
+      display: inline-block;
+      height: 40px;
+      width: 120px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 16px;
+      color: #fff;
+      background: #249bd3;
+      border-radius: 3px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  }
+}

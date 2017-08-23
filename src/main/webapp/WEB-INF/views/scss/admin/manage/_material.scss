@@ -1,0 +1,57 @@
+.material {
+  margin: 50px auto;
+  width: 90%;
+  min-height: 200px;
+  .conters {
+    .side {
+      display: block;
+    }
+    .table-row {
+      width: 100%;
+    }
+    .nav-tabs {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #dfe6eb;
+      & :first-child a {
+        border-right: 0;
+      }
+      li {
+        margin-right: 1px;
+        a {
+          display: block;
+          width: 100px;
+          height: 36px;
+          line-height: 36px;
+          text-align: center;
+          color: #999898;
+          border: 1px solid #dfe6eb;
+          border-top: 3px solid #dfe6eb;
+          border-bottom: 0;
+          background-color: #f3f7f9;
+          font-size: 14px;
+        }
+      }
+      .active {
+        border-left: 1px solid #dfe6eb;
+        border-right: 1px solid #dfe6eb;
+        border-top: 3px solid #4F9FDE;
+        color: #000;
+        position: relative;
+        background-color: #98c5eb;
+        color: #fff;
+        //i {
+        //  width: 16px;
+        //  height: 8px;
+        //  position: absolute;
+        //  top: 0;
+        //  left: 50%;
+        //  margin-left: -8px;
+        //  background: url("../../../img/nav-active-icon.png") no-repeat center;
+        //  background-size: 100%;
+        //}
+      }
+    }
+
+  }
+
+}

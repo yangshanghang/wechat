@@ -1,0 +1,30 @@
+.loginContent {
+  width: 100%;
+  background: url("/img/login-banner.png") no-repeat center 0;
+  background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/login-banner.png',sizingMethod='scale');
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+}
+
+.loginContent .cr-bot {
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 20px;
+  color: #666666;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+
+.loginContent .cr-bot span {
+  display: block;
+  text-align: center;
+}
+
+.loginContent .cr-bot span i {
+  display: inline-block;
+  line-height: 12px;
+  width: 1em;
+}

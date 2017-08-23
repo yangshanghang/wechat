@@ -1,0 +1,2 @@
+
+INSERT INTO `WECHAT_TEMPLATE` VALUES ('86011f80ec0d11e6a00a00188b839ae6', 'lAY0ACL7J0wVpgwHel7W37VkfNA4rfJSukNp0n8lcUQ', 'yr_intime_notice', 'first:content:#ff0000;keyword1:toDo:#000000;keyword2:basicInfo:#000000;keyword3:sendTime:#aaaaaa');

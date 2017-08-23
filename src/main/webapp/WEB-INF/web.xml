@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright© 2003-2016 浙江汇信科技有限公司, All Rights Reserved.
+  -->
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                        http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+						version="3.0">
+
+	<display-name>lpsp-wechat</display-name>
+
+	<listener>
+		<listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+	</listener>
+	
+	<context-param>
+		<param-name>logbackConfigLocation</param-name>
+		<param-value>classpath:entry/dev/logback.xml</param-value>
+	</context-param>
+
+	<!-- XSS 跨站脚本攻击 -->
+	<context-param>
+		<param-name>defaultHtmlEscape</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+	<!-- Spring配置文件开始 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:entry/dev/spring-entry.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 单点登录开始 -->
+	<listener>
+		<!--该listener监听单点退出请求 -->
+		<listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
+	</listener>
+
+	<!-- 单点退出 -->
+	<filter>
+		<filter-name>CAS Single Sign Out Filter</filter-name>
+		<filter-class>org.jasig.cas.client.session.SingleSignOutFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CAS Single Sign Out Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<!--该filter处理用户认证 -->
+		<filter-name>CAS Authentication Filter</filter-name>
+		<filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
+		<init-param>
+			<!--casServerLoginUrl指定casServer应用的登陆地址 -->
+			<param-name>casServerLoginUrl</param-name>
+			<param-value>https://sso.idinfo.cn/login</param-value>
+		</init-param>
+		<init-param>
+			<!--serverName指定本应用的地址，注意这里没有应用名 -->
+			<param-name>serverName</param-name>
+			<!-- 开发环境 -->
+			<param-value>http://192.168.5.81:8082</param-value>
+			<!-- 测试环境 -->
+			<!-- <param-value>http://192.168.30.7:8080</param-value> -->
+			<!-- 正式环境 -->
+			<!-- <param-value>http://wx.linksgood.com</param-value> -->
+		</init-param>
+	</filter>
+
+	<filter>
+		<!--该filter处理登陆后的验证 -->
+		<filter-name>CAS Validation Filter</filter-name>
+		<filter-class>org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter</filter-class>
+		<init-param>
+			<param-name>casServerUrlPrefix</param-name>
+			<param-value>https://sso.idinfo.cn</param-value>
+		</init-param>
+		<init-param>
+			<param-name>serverName</param-name>
+			<!-- 开发环境 -->
+			<param-value>http://192.168.5.81:8082</param-value>
+			<!-- 测试环境 -->
+			<!-- <param-value>http://192.168.30.7:8080</param-value> -->
+			<!-- 正式环境 -->
+			<!-- <param-value>http://wx.linksgood.com</param-value> -->
+		</init-param>
+		<init-param>
+			<param-name>redirectAfterValidation</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>hostnameVerifier</param-name>
+			<param-value>org.jasig.cas.client.ssl.AnyHostnameVerifier</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<!--该filter负责对request中的信息进行封装和处理 -->
+		<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+		<filter-class>org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>
+	</filter>
+
+	<!--需要拦截的方法 -->
+	<filter-mapping>
+		<filter-name>CAS Authentication Filter</filter-name>
+		<url-pattern>/cas/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CAS Validation Filter</filter-name>
+		<url-pattern>/cas/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+		<url-pattern>/cas/*</url-pattern>
+	</filter-mapping>
+	<!-- 单点登录结束 -->
+
+	<!-- Spring配置文件结束 -->
+
+	<!-- shiro config start -->
+	<!--<filter>-->
+		<!--<filter-name>shiroFilter</filter-name>-->
+		<!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+		<!--<init-param>-->
+			<!--<param-name>targetFilterLifecycle</param-name>-->
+			<!--<param-value>true</param-value>-->
+		<!--</init-param>-->
+	<!--</filter>-->
+	<!--<filter-mapping>-->
+		<!--<filter-name>shiroFilter</filter-name>-->
+		<!--<url-pattern>/*</url-pattern>-->
+	<!--</filter-mapping>-->
+	<!-- shiro config end-->
+
+	<!-- 设置servlet编码开始 -->
+	<filter>
+		<filter-name>Set Character Encoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 设置servlet编码结束 -->
+
+	<!-- XSS攻击防护配置 start -->
+	<filter>
+		<filter-name>SafeRequestFilter</filter-name>
+		<filter-class>com.icinfo.framework.core.web.filter.SafeRequestFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SafeRequestFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- XSS攻击防护配置 end -->
+
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:entry/dev/spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- 欢迎页面 -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

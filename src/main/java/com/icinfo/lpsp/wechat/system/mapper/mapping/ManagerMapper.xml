@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icinfo.lpsp.wechat.system.mapper.ManagerMapper" >
+  <resultMap id="BaseResultMap" type="com.icinfo.lpsp.wechat.system.model.Manager" >
+    <!--
+      WARNING - @frameworkgenerated
+    -->
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="LWM_USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="LWM_LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="LWM_USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="LWM_MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="LWM_STATUS" property="status" jdbcType="CHAR" />
+    <result column="LWM_CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="LWM_OPERATOR" property="operator" jdbcType="VARCHAR" />
+    <result column="LWM_OPERATE_TIME" property="operateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>
