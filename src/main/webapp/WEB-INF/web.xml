@@ -38,92 +38,92 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- 单点登录开始 -->
-	<listener>
-		<!--该listener监听单点退出请求 -->
-		<listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
-	</listener>
+	<!--&lt;!&ndash; 单点登录开始 &ndash;&gt;-->
+	<!--<listener>-->
+		<!--&lt;!&ndash;该listener监听单点退出请求 &ndash;&gt;-->
+		<!--<listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>-->
+	<!--</listener>-->
 
-	<!-- 单点退出 -->
-	<filter>
-		<filter-name>CAS Single Sign Out Filter</filter-name>
-		<filter-class>org.jasig.cas.client.session.SingleSignOutFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>CAS Single Sign Out Filter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	<!--&lt;!&ndash; 单点退出 &ndash;&gt;-->
+	<!--<filter>-->
+		<!--<filter-name>CAS Single Sign Out Filter</filter-name>-->
+		<!--<filter-class>org.jasig.cas.client.session.SingleSignOutFilter</filter-class>-->
+	<!--</filter>-->
+	<!--<filter-mapping>-->
+		<!--<filter-name>CAS Single Sign Out Filter</filter-name>-->
+		<!--<url-pattern>/*</url-pattern>-->
+	<!--</filter-mapping>-->
 
-	<filter>
-		<!--该filter处理用户认证 -->
-		<filter-name>CAS Authentication Filter</filter-name>
-		<filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
-		<init-param>
-			<!--casServerLoginUrl指定casServer应用的登陆地址 -->
-			<param-name>casServerLoginUrl</param-name>
-			<param-value>https://sso.idinfo.cn/login</param-value>
-		</init-param>
-		<init-param>
-			<!--serverName指定本应用的地址，注意这里没有应用名 -->
-			<param-name>serverName</param-name>
-			<!-- 开发环境 -->
-			<param-value>http://192.168.5.81:8082</param-value>
-			<!-- 测试环境 -->
-			<!-- <param-value>http://192.168.30.7:8080</param-value> -->
-			<!-- 正式环境 -->
-			<!-- <param-value>http://wx.linksgood.com</param-value> -->
-		</init-param>
-	</filter>
+	<!--<filter>-->
+		<!--&lt;!&ndash;该filter处理用户认证 &ndash;&gt;-->
+		<!--<filter-name>CAS Authentication Filter</filter-name>-->
+		<!--<filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>-->
+		<!--<init-param>-->
+			<!--&lt;!&ndash;casServerLoginUrl指定casServer应用的登陆地址 &ndash;&gt;-->
+			<!--<param-name>casServerLoginUrl</param-name>-->
+			<!--<param-value>https://sso.idinfo.cn/login</param-value>-->
+		<!--</init-param>-->
+		<!--<init-param>-->
+			<!--&lt;!&ndash;serverName指定本应用的地址，注意这里没有应用名 &ndash;&gt;-->
+			<!--<param-name>serverName</param-name>-->
+			<!--&lt;!&ndash; 开发环境 &ndash;&gt;-->
+			<!--<param-value>http://192.168.5.81:8082</param-value>-->
+			<!--&lt;!&ndash; 测试环境 &ndash;&gt;-->
+			<!--&lt;!&ndash; <param-value>http://192.168.30.7:8080</param-value> &ndash;&gt;-->
+			<!--&lt;!&ndash; 正式环境 &ndash;&gt;-->
+			<!--&lt;!&ndash; <param-value>http://wx.linksgood.com</param-value> &ndash;&gt;-->
+		<!--</init-param>-->
+	<!--</filter>-->
 
-	<filter>
-		<!--该filter处理登陆后的验证 -->
-		<filter-name>CAS Validation Filter</filter-name>
-		<filter-class>org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter</filter-class>
-		<init-param>
-			<param-name>casServerUrlPrefix</param-name>
-			<param-value>https://sso.idinfo.cn</param-value>
-		</init-param>
-		<init-param>
-			<param-name>serverName</param-name>
-			<!-- 开发环境 -->
-			<param-value>http://192.168.5.81:8082</param-value>
-			<!-- 测试环境 -->
-			<!-- <param-value>http://192.168.30.7:8080</param-value> -->
-			<!-- 正式环境 -->
-			<!-- <param-value>http://wx.linksgood.com</param-value> -->
-		</init-param>
-		<init-param>
-			<param-name>redirectAfterValidation</param-name>
-			<param-value>true</param-value>
-		</init-param>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>hostnameVerifier</param-name>
-			<param-value>org.jasig.cas.client.ssl.AnyHostnameVerifier</param-value>
-		</init-param>
-	</filter>
-	<filter>
-		<!--该filter负责对request中的信息进行封装和处理 -->
-		<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
-		<filter-class>org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>
-	</filter>
+	<!--<filter>-->
+		<!--&lt;!&ndash;该filter处理登陆后的验证 &ndash;&gt;-->
+		<!--<filter-name>CAS Validation Filter</filter-name>-->
+		<!--<filter-class>org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter</filter-class>-->
+		<!--<init-param>-->
+			<!--<param-name>casServerUrlPrefix</param-name>-->
+			<!--<param-value>https://sso.idinfo.cn</param-value>-->
+		<!--</init-param>-->
+		<!--<init-param>-->
+			<!--<param-name>serverName</param-name>-->
+			<!--&lt;!&ndash; 开发环境 &ndash;&gt;-->
+			<!--<param-value>http://192.168.5.81:8082</param-value>-->
+			<!--&lt;!&ndash; 测试环境 &ndash;&gt;-->
+			<!--&lt;!&ndash; <param-value>http://192.168.30.7:8080</param-value> &ndash;&gt;-->
+			<!--&lt;!&ndash; 正式环境 &ndash;&gt;-->
+			<!--&lt;!&ndash; <param-value>http://wx.linksgood.com</param-value> &ndash;&gt;-->
+		<!--</init-param>-->
+		<!--<init-param>-->
+			<!--<param-name>redirectAfterValidation</param-name>-->
+			<!--<param-value>true</param-value>-->
+		<!--</init-param>-->
+		<!--<init-param>-->
+			<!--<param-name>encoding</param-name>-->
+			<!--<param-value>UTF-8</param-value>-->
+		<!--</init-param>-->
+		<!--<init-param>-->
+			<!--<param-name>hostnameVerifier</param-name>-->
+			<!--<param-value>org.jasig.cas.client.ssl.AnyHostnameVerifier</param-value>-->
+		<!--</init-param>-->
+	<!--</filter>-->
+	<!--<filter>-->
+		<!--&lt;!&ndash;该filter负责对request中的信息进行封装和处理 &ndash;&gt;-->
+		<!--<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>-->
+		<!--<filter-class>org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>-->
+	<!--</filter>-->
 
 	<!--需要拦截的方法 -->
-	<filter-mapping>
-		<filter-name>CAS Authentication Filter</filter-name>
-		<url-pattern>/cas/*</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>CAS Validation Filter</filter-name>
-		<url-pattern>/cas/*</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
-		<url-pattern>/cas/*</url-pattern>
-	</filter-mapping>
+	<!--<filter-mapping>-->
+		<!--<filter-name>CAS Authentication Filter</filter-name>-->
+		<!--<url-pattern>/cas/*</url-pattern>-->
+	<!--</filter-mapping>-->
+	<!--<filter-mapping>-->
+		<!--<filter-name>CAS Validation Filter</filter-name>-->
+		<!--<url-pattern>/cas/*</url-pattern>-->
+	<!--</filter-mapping>-->
+	<!--<filter-mapping>-->
+		<!--<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>-->
+		<!--<url-pattern>/cas/*</url-pattern>-->
+	<!--</filter-mapping>-->
 	<!-- 单点登录结束 -->
 
 	<!-- Spring配置文件结束 -->
