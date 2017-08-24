@@ -27,21 +27,6 @@ public class ConfigConstant {
      */
     public static String TOKEN_LIANLIAN;
 
-    /**
-     * 联连用户系统URL
-     */
-    public static String UUSER_SERVER_URL;
-
-    /**
-     * 监管系统URL
-     */
-    public static String CS_SERVER_URL;
-
-    /**
-     * 消息管理平台URL
-     */
-    public static String MMS_SERVER_URL;
-
     @Value("${lianlian.appid}")
     public void setAppIdLianlian(String appIdLianlian) {
         APP_ID_LIANLIAN = appIdLianlian;
@@ -55,20 +40,5 @@ public class ConfigConstant {
     @Value("${lianlian.token}")
     public void setTokenLianlian(String tokenLianlian) {
         TOKEN_LIANLIAN = tokenLianlian;
-    }
-
-    @Value("${uuser.server.url}")
-    public void setUuserServerurl(String uuserServerurl) {
-        UUSER_SERVER_URL = uuserServerurl;
-    }
-
-    @Value("${cs.server.url}")
-    public void setCsServerUrl(String csServerUrl) {
-        CS_SERVER_URL = csServerUrl;
-    }
-
-    @Value(("${mms.server.url}"))
-    public void setMmsServerUrl(String mmsServerUrl){
-        MMS_SERVER_URL = mmsServerUrl;
     }
 }

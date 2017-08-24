@@ -5,12 +5,10 @@ package com.icinfo.lpsp.wechat.system.controller;
 
 import com.icinfo.lpsp.wechat.common.constant.Constants;
 import com.icinfo.lpsp.wechat.common.controller.BaseController;
-import com.icinfo.lpsp.wechat.system.model.Manager;
 import com.icinfo.lpsp.wechat.system.service.IManagerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,12 +32,6 @@ public class LoginController extends BaseController {
     private final static Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     /**
-     * 单点退出地址
-     */
-    @Value("${user.logout.url}")
-    private String userLogoutUrl;
-
-    /**
      * 注入用户服务
      */
     @Autowired
@@ -56,16 +48,17 @@ public class LoginController extends BaseController {
     @RequestMapping(value = "/cas/login", method = RequestMethod.GET)
     public String login(HttpServletRequest request, Model model, HttpSession session, SessionStatus sessionStatus) throws Exception {
         //1.根据id获取用户对象
-        Manager manager = managerService.getManagerById(getCASSysUser(request).getUserId());
+//        Manager manager = managerService.getManagerById(getCASSysUser(request).getUserId());
         //2.若用户不为空，则设置session
-        if (manager != null) {
-            model.addAttribute(Constants.SESSION_MANAGER_INFO, manager);
-        } else {
-            // 1.删除session中数据
-            sessionStatus.setComplete();
-            session.invalidate();
-            return "redirect:" + userLogoutUrl+"?noauth=1";
-        }
+//        if (manager != null) {
+//            model.addAttribute(Constants.SESSION_MANAGER_INFO, manager);
+//        }
+//        else {
+//            // 1.删除session中数据
+//            sessionStatus.setComplete();
+//            session.invalidate();
+//            return "redirect:" + userLogoutUrl+"?noauth=1";
+//        }
         return "redirect:/admin/index";
     }
 
@@ -93,6 +86,7 @@ public class LoginController extends BaseController {
         // 1.删除session中数据
         sessionStatus.setComplete();
         session.invalidate();
-        return "redirect:" + userLogoutUrl;
+//        return "redirect:" + userLogoutUrl;
+        return "/";
     }
 }

@@ -84,4 +84,4 @@ require(['common/util', 'layer1', 'common/http', 'jquery.validate', 'jquery', 'j
         }])
     }
 
-})
+});

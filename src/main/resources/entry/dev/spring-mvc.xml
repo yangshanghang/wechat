@@ -63,10 +63,10 @@
             <mvc:mapping path="/**"/>
             <bean class="com.icinfo.framework.core.web.interceptor.GenericInterceptor"/>
         </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/**"/>
-            <bean class="com.icinfo.lpsp.wechat.common.interceptor.ManagerAuthorityInterceptor"/>
-        </mvc:interceptor>
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/admin/**"/>-->
+            <!--<bean class="com.icinfo.lpsp.wechat.common.interceptor.ManagerAuthorityInterceptor"/>-->
+        <!--</mvc:interceptor>-->
     </mvc:interceptors>
 
     <!-- 配置消息转换服务 -->

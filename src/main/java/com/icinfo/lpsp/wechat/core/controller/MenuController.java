@@ -1,10 +1,6 @@
 package com.icinfo.lpsp.wechat.core.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.icinfo.lpsp.wechat.common.constant.ConfigConstant;
-import com.icinfo.lpsp.wechat.common.remote.api.CsAPI;
-import com.icinfo.lpsp.wechat.common.remote.api.UUserAPI;
-import com.icinfo.lpsp.wechat.common.remote.response.UUserApiResponse;
 import com.icinfo.lpsp.wechat.wxsdk.oauth.OauthAPI;
 import com.icinfo.lpsp.wechat.wxsdk.oauth.bean.WechatOauth2Token;
 import org.slf4j.Logger;
@@ -37,7 +33,6 @@ public class MenuController {
      */
     @RequestMapping(value = "/mymessage", method = RequestMethod.GET)
     public String myMessage(HttpServletRequest request, Model model) throws Exception {
-        // 1.获取openId
         WechatOauth2Token oauth2AccessToken = OauthAPI.getOauth2AccessToken(ConfigConstant.APP_ID_LIANLIAN, ConfigConstant.APP_SECRET_LIANLIAN, request);
 
         if (!oauth2AccessToken.isSuccess()) {
@@ -46,17 +41,8 @@ public class MenuController {
             return "wechat/error";
         }
 
-        // 2.根据openId获取联连用户
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("openId", oauth2AccessToken.getOpenid());
-        UUserApiResponse uUserApiResponse = UUserAPI.getUserInfo(jsonObject);
-        if (uUserApiResponse.isSuccess()) {
-            // 3.进消息列表页面
-            return "redirect:/wechat/message/page/" + uUserApiResponse.getUserInfo().getPwdRecoverPhoneNum();
-        }
-
-        // 4.进联连用户绑定页面
-        return "redirect:" + ConfigConstant.UUSER_SERVER_URL + "/external/doEnSetPhone.do?mark=1&openId=" + oauth2AccessToken.getOpenid();
+        // 进入跳转页面
+        return "redirect:http://www.baidu.com";
     }
 
 
@@ -69,46 +55,17 @@ public class MenuController {
      */
     @RequestMapping(value = "/bindll", method = RequestMethod.GET)
     public String bindLl(HttpServletRequest request, Model model) throws Exception {
-        // 1.获取openId
+        // 1.获取网页授权信息
         WechatOauth2Token oauth2AccessToken = OauthAPI.getOauth2AccessToken(ConfigConstant.APP_ID_LIANLIAN, ConfigConstant.APP_SECRET_LIANLIAN, request);
 
+        // 2.获取失败，进错误页面
         if (!oauth2AccessToken.isSuccess()) {
             logger.error("通过code换取网页授权access_token失败！" + oauth2AccessToken.getErrcode() + oauth2AccessToken.getErrmsg());
             model.addAttribute("errorMsg", "打开页面失败，请重试！");
             return "wechat/error";
         }
 
-        // 2.进联连用户重新绑定页面
-        return "redirect:" + ConfigConstant.UUSER_SERVER_URL + "/external/doEnSetPhone.do?mark=2&openId=" + oauth2AccessToken.getOpenid();
-    }
-
-    /**
-     * “抽查检查”菜单
-     *
-     * @param request 请求
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping(value = "/gscheck", method = RequestMethod.GET)
-    public String gsCheck(HttpServletRequest request, Model model) throws Exception {
-        // 1.获取openId
-        WechatOauth2Token oauth2AccessToken = OauthAPI.getOauth2AccessToken(ConfigConstant.APP_ID_LIANLIAN, ConfigConstant.APP_SECRET_LIANLIAN, request);
-        if (!oauth2AccessToken.isSuccess()) {
-            logger.error("通过code换取网页授权access_token失败！" + oauth2AccessToken.getErrcode() + oauth2AccessToken.getErrmsg());
-            model.addAttribute("errorMsg", "打开页面失败，请重试！");
-            return "wechat/error";
-        }
-
-        // 2.判断用户是否绑定，若未绑定则进联连用户绑定页面
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("openId", oauth2AccessToken.getOpenid());
-        UUserApiResponse uUserApiResponse = UUserAPI.getUserInfo(jsonObject);
-        if (!uUserApiResponse.isSuccess()) {
-            return "redirect:" + ConfigConstant.UUSER_SERVER_URL + "/external/doEnSetPhone.do?mark=1&openId=" + oauth2AccessToken.getOpenid();
-        }
-
-        // 3.判断是否为联络员
-        String liaisonMan = CsAPI.isLiaisonMan(uUserApiResponse.getUserInfo().getPwdRecoverPhoneNum()) ? "1" : "0";
-        return "redirect:" + ConfigConstant.MMS_SERVER_URL + "/wechat/info/gscheck/search/" + uUserApiResponse.getUserInfo().getPwdRecoverPhoneNum() + "/" + oauth2AccessToken.getOpenid() + "/" + liaisonMan;
+        // 3.进入跳转页面
+        return "redirect:http://www.baidu.com";
     }
 }
