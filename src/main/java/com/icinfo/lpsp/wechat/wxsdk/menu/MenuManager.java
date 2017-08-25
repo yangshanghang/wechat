@@ -43,9 +43,9 @@ public class MenuManager {
      * @return
      * @throws Exception
      */
-    public static boolean initMenuByJson(String jsonStr, String appID, String appSecret) throws Exception {
+    public static BaseResult initMenuByJson(String jsonStr, String appID, String appSecret) throws Exception {
         BaseResult result = MenuAPI.menuCreate(TokenManager.getToken(appID, appSecret).getAccess_token(), jsonStr);
-        return result.isSuccess();
+        return result;
     }
 
     /**

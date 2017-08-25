@@ -2,6 +2,7 @@ package com.icinfo.lpsp.wechat.manage.controller.admin;
 
 import com.icinfo.framework.common.ajax.AjaxResult;
 import com.icinfo.lpsp.wechat.common.constant.ConfigConstant;
+import com.icinfo.lpsp.wechat.wxsdk.base.BaseResult;
 import com.icinfo.lpsp.wechat.wxsdk.menu.MenuManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,11 +54,11 @@ public class MenuController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public AjaxResult add(@RequestParam(name = "menus", required = true) String menus) throws Exception {
-        boolean flag = MenuManager.initMenuByJson(menus, ConfigConstant.APP_ID_LIANLIAN, ConfigConstant.APP_SECRET_LIANLIAN);
-        if (flag) {
+        BaseResult result = MenuManager.initMenuByJson(menus, ConfigConstant.APP_ID_LIANLIAN, ConfigConstant.APP_SECRET_LIANLIAN);
+        if (result.isSuccess()) {
             return AjaxResult.success("保存菜单成功!");
         } else {
-            return AjaxResult.error("保存菜单失败!");
+            return AjaxResult.error("保存菜单失败：" + result.getErrcode() + "——" + result.getErrmsg());
         }
     }
 }
